@@ -1,0 +1,20 @@
+<table class="table table-bordered" style="margin-top: 5%;">
+    <thead>
+        <tr>
+            <th>DAY</th>
+            <th>YEAR</th>
+            <th>MONTH</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor ="let monthdata of septemberMonthData">
+            <!-- <td><a href="javascript:void(0)"
+                (click)="dateSelect(monthdata)">{{monthdata.day}}</a></td> -->
+            <td><a href="javascript:void(0)" (click)="dateSelecthistory(monthdata)">{{monthdata.day}}</a></td>  
+            <td>{{monthdata.year}}</td>
+            <td>{{monthdata.month}}</td>
+            <td><a [routerLink]="['/matTable']">Redirect</a></td>
+        </tr>
+    </tbody>
+  </table>

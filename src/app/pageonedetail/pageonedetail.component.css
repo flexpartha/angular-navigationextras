@@ -1,0 +1,40 @@
+.showMonthdetails {
+    position: absolute;
+    top: 62px;
+    left: 0;
+    right: 5px;
+    padding: 0 10px 0 10px;
+    width: 45%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #1976d2;
+    color: #000;
+    font-weight: 600;
+  }
+
+  table{
+    width: 50%;
+    border: 1px solid grey;
+    position: absolute;
+    top: 75%;
+  }
+
+  .th{
+    padding: 5px 13px;
+    border: 1px solid grey;
+  }
+  .td{
+    padding: 5px 13px;
+    border: 1px solid grey;
+  }
+
+  .divInput{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    top: 55px;
+  }

@@ -1,0 +1,67 @@
+<div class="showMonthdetails">
+    <span>{{selectedDate}}</span>
+    <span>{{selectedMonth  | uppercase}}</span>
+    <span>{{selectedYear}}</span>
+</div>
+<br>
+<div style="position: absolute; top:38%;left:0">
+    <h5>Giga Bytes to Mega Bytes</h5>
+    <p>{{replaceLasttwocharacter}} GB = {{replaceLasttwocharacter | gigabytesToMegabytes}} MB</p>
+</div>
+<br/>
+<br/>
+<div class="divInput">
+    <div style="order: 1;">
+        <input appFirstcharacterinputtxt type="text" placeholder="Enter Value" (keyup)="onKeyUpF($event)" />
+    </div>
+    <div style="order: 2;margin-left: 12px;">
+        <p>{{valueName}}</p>
+    </div>
+    <div style="order: 3; margin-left:165px;">
+        <app-childcomponent [countrydetaiLlist]="countryDetails" (despatchOnkeyUp)="fromdespatchKeyUp($event)"></app-childcomponent>
+    </div>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<h1 style="position: absolute; top:67%;left:0">Employee Details</h1>
+<br/>
+<br/>
+<br/>
+<input type="text" [(ngModel)] ="nameString" placeholder="Search Employee"   style="position: absolute; top:64%;left:0">
+<br/>
+<br/>
+<br/>
+<div style="display: block; width:50%;height:auto">
+    <table>
+        <thead>
+            <tr>
+                <th class="th">First name</th>
+                <th class="th">Last name</th>
+                <th class="th">Department</th>
+                <th class="th">Salary</th>
+                <th class="th">Date of Joining</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of employees | searchPipe:nameString">
+                <td class="td">{{emp.firstName}}</td>
+                <td class="td">{{emp.lastName}}</td>
+                <td class="td">{{emp.dept}}</td>
+                <td class="td">{{emp.salary | currency}}</td>
+                <td class="td">{{emp.doj | date:'dd/MM/yyyy'}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button"
+              (click)="addUser()">
+        Add Employee
+      </button>
+</div>
+<br/>
+<br/>
+<br/>
+<!-- <p *ngIf="isShow1" style="position: absolute; top:75%;left:0">{{valueNameN}}</p> -->
+
