@@ -67,68 +67,72 @@ export class PageonedetailComponent implements OnInit {
     //return currentState.extras.state;
     if(currentState?.extras.state && currentState?.extras.state['date']){
       var str = currentState?.extras.state['date'];
+      console.log("str",str);
       this.selectedDate = str.day; 
       this.selectedMonth = str.month;
       this.selectedYear = str.year;
     };
+    // THIS SECTION BELONGS TO NAVIGATION EXTRAS IF NAVIGATE DATA VIA NAVIGATION EXTRAS
 
-    // if(str === undefined){
-    //   console.log("STR::-",str);
-    //   this.getSepMonthData = sessionStorage.getItem("strModel");
-    //   const finalSepMonthData = JSON.parse(this.getSepMonthData);
-    //   console.log("STR::-",str);
-    //   this.selectedDate = finalSepMonthData.day;
-    //   this.selectedMonth = finalSepMonthData.month;
-    //   this.selectedYear = finalSepMonthData.year;
-    // }
-    // else{
-    // console.log("STR::-",str);
-    // sessionStorage.setItem("strModel",JSON.stringify(str));
-    // this.selectedDate = str.day;
-    // this.selectedMonth = str.month;
-    // this.selectedYear = str.year;
-    // var theMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    //   for(var i = 0; i < theMonths.length;i++){
-    //     if(theMonths[i].toLowerCase() === this.selectedMonth){
-    //       this.monthCount = parseInt(i.toString()) +1;
-    //     }
-    //   }
-
-    // this.replaceLasttwocharacter = this.selectedDate.substring(0,this.selectedDate.length - 2);
-    // let convertedDt = this.selectedYear + "-" + this.monthCount + "-" + this.replaceLasttwocharacter;
-    // let Today = new Date(convertedDt);
-    // console.log("convertedDt::--",new DatePipe('en-us').transform(Today,'yyyy-MM-dd'));
-    // }
-  }
-
-  ngOnInit(): void {
-    this.monthModel = window.history.state[0];
-    if(this.monthModel === undefined){
-      this.getSepMonthData = sessionStorage.getItem("monthModel");
+    if(str === undefined){
+      console.log("STR::-",str);
+      this.getSepMonthData = sessionStorage.getItem("strModel");
       const finalSepMonthData = JSON.parse(this.getSepMonthData);
-      console.log("finalSepMonthData::-",finalSepMonthData);
+      console.log("STR::-",str);
       this.selectedDate = finalSepMonthData.day;
       this.selectedMonth = finalSepMonthData.month;
       this.selectedYear = finalSepMonthData.year;
     }
     else{
-      sessionStorage.setItem("monthModel",JSON.stringify(this.monthModel));
-      console.log("window.history::-",this.monthModel);
-      this.selectedDate = this.monthModel.day;
-      this.selectedMonth = this.monthModel.month;
-      this.selectedYear = this.monthModel.year;
-      var theMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        for(var i = 0; i < theMonths.length;i++){
-          if(theMonths[i].toLowerCase() === this.selectedMonth){
-            this.monthCount = parseInt(i.toString()) +1;
-          }
+    console.log("STR::-",str);
+    sessionStorage.setItem("strModel",JSON.stringify(str));
+    this.selectedDate = str.day;
+    this.selectedMonth = str.month;
+    this.selectedYear = str.year;
+    var theMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      for(var i = 0; i < theMonths.length;i++){
+        if(theMonths[i].toLowerCase() === this.selectedMonth){
+          this.monthCount = parseInt(i.toString()) +1;
         }
+      }
 
-      this.replaceLasttwocharacter = this.selectedDate.substring(0,this.selectedDate.length - 2);
-      let convertedDt = this.selectedYear + "-" + this.monthCount + "-" + this.replaceLasttwocharacter;
-      let Today = new Date(convertedDt);
-      console.log("convertedDt::--",new DatePipe('en-us').transform(Today,'yyyy-MM-dd'));
+    this.replaceLasttwocharacter = this.selectedDate.substring(0,this.selectedDate.length - 2);
+    let convertedDt = this.selectedYear + "-" + this.monthCount + "-" + this.replaceLasttwocharacter;
+    let Today = new Date(convertedDt);
+    console.log("convertedDt::--",new DatePipe('en-us').transform(Today,'yyyy-MM-dd'));
     }
+  }
+
+  ngOnInit(): void {
+    // THIS SECTION BELONGS TO WINDOW HISTORY STATE IF NAVIGATE DATA VIA NAVIGATION EXTRAS
+
+    // this.monthModel = window.history.state[0];
+    // if(this.monthModel === undefined){
+    //   this.getSepMonthData = sessionStorage.getItem("monthModel");
+    //   const finalSepMonthData = JSON.parse(this.getSepMonthData);
+    //   console.log("finalSepMonthData::-",finalSepMonthData);
+    //   this.selectedDate = finalSepMonthData.day;
+    //   this.selectedMonth = finalSepMonthData.month;
+    //   this.selectedYear = finalSepMonthData.year;
+    // }
+    // else{
+    //   sessionStorage.setItem("monthModel",JSON.stringify(this.monthModel));
+    //   console.log("window.history::-",this.monthModel);
+    //   this.selectedDate = this.monthModel.day;
+    //   this.selectedMonth = this.monthModel.month;
+    //   this.selectedYear = this.monthModel.year;
+    //   var theMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    //     for(var i = 0; i < theMonths.length;i++){
+    //       if(theMonths[i].toLowerCase() === this.selectedMonth){
+    //         this.monthCount = parseInt(i.toString()) +1;
+    //       }
+    //     }
+
+    //   this.replaceLasttwocharacter = this.selectedDate.substring(0,this.selectedDate.length - 2);
+    //   let convertedDt = this.selectedYear + "-" + this.monthCount + "-" + this.replaceLasttwocharacter;
+    //   let Today = new Date(convertedDt);
+    //   console.log("convertedDt::--",new DatePipe('en-us').transform(Today,'yyyy-MM-dd'));
+    // }
   }
 
   @HostListener('window:popstate', ['$event'])

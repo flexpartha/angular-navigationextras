@@ -9,9 +9,11 @@
     </thead>
     <tbody>
         <tr *ngFor ="let monthdata of septemberMonthData">
-            <!-- <td><a href="javascript:void(0)"
-                (click)="dateSelect(monthdata)">{{monthdata.day}}</a></td> -->
-            <td><a href="javascript:void(0)" (click)="dateSelecthistory(monthdata)">{{monthdata.day}}</a></td>  
+            <!-- THIS SECTION BELONGS TO NAVIGATION EXTRAS IF NAVIGATE DATA VIA NAVIGATION EXTRAS -->
+            <td><a href="javascript:void(0)"
+                (click)="dateSelect(monthdata)">{{monthdata.day}}</a></td>
+            <!-- THIS SECTION BELONGS TO WINDOW HISTORY STATE IF NAVIGATE DATA VIA NAVIGATION EXTRAS -->
+            <!-- <td><a href="javascript:void(0)" (click)="dateSelecthistory(monthdata)">{{monthdata.day}}</a></td>   -->
             <td>{{monthdata.year}}</td>
             <td>{{monthdata.month}}</td>
             <td><a [routerLink]="['/matTable']">Redirect</a></td>
