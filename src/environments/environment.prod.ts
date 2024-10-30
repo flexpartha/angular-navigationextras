@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  BASE_URL: '/routing/navigationextras'
+  name: 'PROD-ENVIRONMENT',
+  BASE_URL: '/routing/prod/navigationextras'
 };

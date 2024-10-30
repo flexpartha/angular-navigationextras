@@ -54,6 +54,14 @@
               ],
               "outputHashing": "all"
             },
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.qa.ts"
+                }
+              ]
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -73,6 +81,9 @@
             },
             "development": {
               "browserTarget": "ang-navigationextras:build:development"
+            },
+            "qa": {
+              "browserTarget": "ang-navigationextras:build:qa"
             }
           },
           "defaultConfiguration": "development"

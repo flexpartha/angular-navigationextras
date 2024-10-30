@@ -23,21 +23,21 @@ export class PageonemonthListComponent implements OnInit {
 
   getSeptemberMonthData(){
     this.septemberMonthServ.getSeptembermonthdata().subscribe((res)=>{
-      console.log("Show Res::--",res);
+      console.log('Show Res::--',res);
       this.septemberMonthData = res;
-      console.log("this.septemberMonthData::--",res);
+      console.log('this.septemberMonthData::--',res);
     })
   }
 
   // this is for navigation extras
   dateSelect(selectedDate:SetMonth){
-    console.log("Date::- "+ selectedDate);
+    console.log('Date::- '+ JSON.stringify(selectedDate));
     this.router.navigate(['/pageoneDetails'],  {state: { date: selectedDate }});
   }
 
   // this is for window.history.state[0];
   dateSelecthistory(selectedDate:any){
-    console.log("Date::- "+ JSON.stringify(selectedDate));
+    console.log('Date::- '+ JSON.stringify(selectedDate));
     this.router.navigate(['/pageoneDetails'],  {state: [selectedDate]});
   }
 }

@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, HostBinding} from '@angular/core';
+import { Directive, ElementRef, HostListener, HostBinding, Renderer2} from '@angular/core';
 
 @Directive({
   selector: '[appFirstcharacterinputtxt]' 
@@ -17,7 +17,7 @@ possibleColors = [
     'lightslategrey'
   ];
 
-  constructor( private el:ElementRef) { }
+  constructor( private el:ElementRef, private r2:Renderer2) { }
 
   @HostBinding('style.color') color!: string;
   @HostBinding('style.border-color') borderColor!: string;

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  BASE_URL: '/routing/navigationextras'
+  name: 'DEV-ENVIRONMENT',
+  BASE_URL: '/routing/navigationextras',
 };
 
 /*

@@ -5,38 +5,37 @@ import { SetMonth } from '../model/setMonth';
 @Component({
   selector: 'app-pageonedetail',
   templateUrl: './pageonedetail.component.html',
-  styleUrls: ['./pageonedetail.component.css']
+  styleUrls: ['./pageonedetail.component.css'],
 })
 export class PageonedetailComponent implements OnInit {
-
-  monthModel:any;
-  getSepMonthData:any;
-  selectedDate:any;
-  replaceLasttwocharacter:any;
-  selectedYear:any;
-  monthCount:any;
-  selectedMonth:any;
-  valueName:any;
-  valueNameN:any;
+  monthModel: any;
+  getSepMonthData: any;
+  selectedDate: any;
+  replaceLasttwocharacter: any;
+  selectedYear: any;
+  monthCount: any;
+  selectedMonth: any;
+  valueName: any;
+  valueNameN: any;
   isShow = false;
   isShow1 = false;
   countryDetails = [
-         {
-           country: "India",
-           capital: "Delhi",
-           weatherTmp: "35.7"
-         },
-         {
-          country: "Sri Lanka",
-          capital: "Colombo",
-          weatherTmp: "32.7"
-        },
-        {
-          country: "Bangla Desh",
-          capital: "Dhaka",
-          weatherTmp: "39.7"
-        }
-    ];
+    {
+      country: 'India',
+      capital: 'Delhi',
+      weatherTmp: '35.7',
+    },
+    {
+      country: 'Sri Lanka',
+      capital: 'Colombo',
+      weatherTmp: '32.7',
+    },
+    {
+      country: 'Bangla Desh',
+      capital: 'Dhaka',
+      weatherTmp: '39.7',
+    },
+  ];
   nameString = '';
   employees = [
     {
@@ -44,68 +43,91 @@ export class PageonedetailComponent implements OnInit {
       lastName: 'Sharma',
       dept: 'Finance',
       salary: 5000,
-      doj: new Date('2012-04-22')
+      doj: new Date('2012-04-22'),
     },
     {
       firstName: 'Aditi',
       lastName: 'Mishra',
       dept: 'Sales',
       salary: 6000,
-      doj: new Date('2016-09-16')
+      doj: new Date('2016-09-16'),
     },
     {
       firstName: 'Dipti',
       lastName: 'Singh',
       dept: 'IT',
       salary: 10000,
-      doj: new Date('2021-09-03')
-    }
-  ]
+      doj: new Date('2021-09-03'),
+    },
+  ];
 
-  constructor(private router: Router) { 
+  constructor(private router: Router) {
     const currentState = this.router.getCurrentNavigation();
     //return currentState.extras.state;
-    if(currentState?.extras.state && currentState?.extras.state['date']){
+    if (currentState?.extras.state && currentState?.extras.state['date']) {
       var str = currentState?.extras.state['date'];
-      console.log("str",str);
-      this.selectedDate = str.day; 
+      console.log('str', str);
+      this.selectedDate = str.day;
       this.selectedMonth = str.month;
       this.selectedYear = str.year;
-    };
+    }
     // THIS SECTION BELONGS TO NAVIGATION EXTRAS IF NAVIGATE DATA VIA NAVIGATION EXTRAS
 
-    if(str === undefined){
-      console.log("STR::-",str);
-      this.getSepMonthData = sessionStorage.getItem("strModel");
+    if (str === undefined) {
+      console.log('STR::-', str);
+      this.getSepMonthData = sessionStorage.getItem('strModel');
       const finalSepMonthData = JSON.parse(this.getSepMonthData);
-      console.log("STR::-",str);
+      console.log('STR::-', str);
       this.selectedDate = finalSepMonthData.day;
       this.selectedMonth = finalSepMonthData.month;
       this.selectedYear = finalSepMonthData.year;
-    }
-    else{
-    console.log("STR::-",str);
-    sessionStorage.setItem("strModel",JSON.stringify(str));
-    this.selectedDate = str.day;
-    this.selectedMonth = str.month;
-    this.selectedYear = str.year;
-    var theMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      for(var i = 0; i < theMonths.length;i++){
-        if(theMonths[i].toLowerCase() === this.selectedMonth){
-          this.monthCount = parseInt(i.toString()) +1;
+    } else {
+      console.log('STR::-', str);
+      sessionStorage.setItem('strModel', JSON.stringify(str));
+      this.selectedDate = str.day;
+      this.selectedMonth = str.month;
+      this.selectedYear = str.year;
+      var theMonths = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ];
+      for (var i = 0; i < theMonths.length; i++) {
+        if (theMonths[i].toLowerCase() === this.selectedMonth) {
+          this.monthCount = parseInt(i.toString()) + 1;
         }
       }
 
-    this.replaceLasttwocharacter = this.selectedDate.substring(0,this.selectedDate.length - 2);
-    let convertedDt = this.selectedYear + "-" + this.monthCount + "-" + this.replaceLasttwocharacter;
-    let Today = new Date(convertedDt);
-    console.log("convertedDt::--",new DatePipe('en-us').transform(Today,'yyyy-MM-dd'));
+      this.replaceLasttwocharacter = this.selectedDate.substring(
+        0,
+        this.selectedDate.length - 2
+      );
+      let convertedDt =
+        this.selectedYear +
+        '-' +
+        this.monthCount +
+        '-' +
+        this.replaceLasttwocharacter;
+      let Today = new Date(convertedDt);
+      console.log(
+        'convertedDt::--',
+        new DatePipe('en-us').transform(Today, 'yyyy-MM-dd')
+      );
     }
   }
 
   ngOnInit(): void {
+    console.log('');
     // THIS SECTION BELONGS TO WINDOW HISTORY STATE IF NAVIGATE DATA VIA NAVIGATION EXTRAS
-
     // this.monthModel = window.history.state[0];
     // if(this.monthModel === undefined){
     //   this.getSepMonthData = sessionStorage.getItem("monthModel");
@@ -127,7 +149,6 @@ export class PageonedetailComponent implements OnInit {
     //         this.monthCount = parseInt(i.toString()) +1;
     //       }
     //     }
-
     //   this.replaceLasttwocharacter = this.selectedDate.substring(0,this.selectedDate.length - 2);
     //   let convertedDt = this.selectedYear + "-" + this.monthCount + "-" + this.replaceLasttwocharacter;
     //   let Today = new Date(convertedDt);
@@ -136,39 +157,38 @@ export class PageonedetailComponent implements OnInit {
   }
 
   @HostListener('window:popstate', ['$event'])
-  onPopState(event:any) {
-     console.log('Back button pressed');
-     sessionStorage.removeItem("monthModel");
-     sessionStorage.removeItem("strModel");
+  onPopState(event: any) {
+    console.log('Back button pressed');
+    sessionStorage.removeItem('monthModel');
+    sessionStorage.removeItem('strModel');
   }
 
-  onKeyUpF(evt:any){
-    for(let i = 0; i < this.countryDetails.length; i++){
-      if(evt.target.value  === this.countryDetails[i].country){
+  onKeyUpF(evt: any) {
+    for (let i = 0; i < this.countryDetails.length; i++) {
+      if (evt.target.value === this.countryDetails[i].country) {
         this.valueName = this.countryDetails[i].capital;
         break;
-      }
-      else{
-        this.valueName = "NO MACHING";
+      } else {
+        this.valueName = 'NO MACHING';
       }
     }
-  };
+  }
 
-  addUser(){
+  addUser() {
     this.employees.push({
       firstName: 'Rahul',
       lastName: 'Yadav',
       dept: 'HR',
       salary: 8000,
-      doj: new Date('2016-11-19')
-    })
-  }
- 
-  reset(){
-    this.employees = this.employees.slice()
+      doj: new Date('2016-11-19'),
+    });
   }
 
-  fromdespatchKeyUp(evt:any){
+  reset() {
+    this.employees = this.employees.slice();
+  }
+
+  fromdespatchKeyUp(evt: any) {
     this.valueName = evt;
   }
 }

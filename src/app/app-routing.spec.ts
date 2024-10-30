@@ -56,7 +56,7 @@ fdescribe('Router: App', () => {
 
  });
 
-  it(`unit test case for default routes`, fakeAsync(() => {
+  it('unit test case for default routes', fakeAsync(() => {
 
     objRouter.navigate(['pageoneMonthList']);
     tick();
@@ -67,7 +67,7 @@ fdescribe('Router: App', () => {
     // })
   }));
 
-  it(`unit test case for pageoneDetails routes`, fakeAsync(() => {
+  it('unit test case for pageoneDetails routes', fakeAsync(() => {
     objRouter.navigate(['pageoneDetails']);
     tick();
     expect(location.path()).toBe('/pageoneDetails');
